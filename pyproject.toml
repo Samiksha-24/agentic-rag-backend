@@ -1,0 +1,34 @@
+[project]
+name = "agentic_rag"
+version = "0.1.0"
+description = "agentic-rag using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.86.0,<1.0.0",
+    "chonkie[semantic]",
+    "markitdown",
+    "qdrant-client",
+    "fastembed",
+    "pypdf",
+    "firecrawl-py",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "python-multipart>=0.0.9",
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=3.0.0",
+]
+
+[project.optional-dependencies]
+streamlit = ["streamlit"]
+
+[project.scripts]
+agentic_rag = "agentic_rag.main:run"
+run_crew = "agentic_rag.main:run"
+train = "agentic_rag.main:train"
+replay = "agentic_rag.main:replay"
+test = "agentic_rag.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

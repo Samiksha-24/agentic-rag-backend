@@ -1,0 +1,302 @@
+/* ==========================================================================
+   Agentic RAG — Unified Design System
+   Single source of truth for color, type, spacing, and components across
+   app.py, app_deep_seek.py and app_llama3.2.py
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---- Color palette ------------------------------------------------- */
+  --arag-bg:            #0F1117;
+  --arag-bg-elevated:   #171A23;
+  --arag-bg-card:       #1B1F2B;
+  --arag-bg-hover:      #22263380;
+  --arag-border:        #2A2F3E;
+  --arag-border-soft:   #23273400;
+
+  --arag-primary:       #8B5CF6;   /* violet */
+  --arag-primary-hover: #7C3AED;
+  --arag-primary-soft:  #8B5CF61f;
+  --arag-accent:        #6366F1;   /* indigo */
+  --arag-gradient:      linear-gradient(135deg, #6366F1 0%, #8B5CF6 55%, #C084FC 100%);
+
+  --arag-success:       #22C55E;
+  --arag-success-soft:  #22C55E1f;
+  --arag-warning:       #F59E0B;
+  --arag-warning-soft:  #F59E0B1f;
+  --arag-info:          #38BDF8;
+  --arag-info-soft:     #38BDF81f;
+  --arag-danger:        #F87171;
+  --arag-danger-soft:   #F871711f;
+
+  --arag-text:          #E6E8F0;
+  --arag-text-muted:    #9AA0B4;
+  --arag-text-faint:    #666C82;
+
+  /* ---- Spacing scale ---------------------------------------------------- */
+  --arag-sp-1: 4px;
+  --arag-sp-2: 8px;
+  --arag-sp-3: 12px;
+  --arag-sp-4: 16px;
+  --arag-sp-5: 24px;
+  --arag-sp-6: 32px;
+  --arag-sp-7: 48px;
+
+  /* ---- Radius / shadow ---------------------------------------------- */
+  --arag-radius-sm: 8px;
+  --arag-radius-md: 12px;
+  --arag-radius-lg: 18px;
+  --arag-radius-full: 999px;
+  --arag-shadow-sm: 0 1px 2px rgba(0,0,0,0.24);
+  --arag-shadow-md: 0 6px 20px rgba(0,0,0,0.28);
+  --arag-shadow-glow: 0 0 0 1px rgba(139,92,246,0.25), 0 8px 24px rgba(139,92,246,0.12);
+}
+
+/* ---- Global resets ----------------------------------------------------- */
+html, body, [class*="css"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--arag-text);
+}
+
+.stApp {
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(139,92,246,0.10), transparent 60%),
+    radial-gradient(1000px 500px at 100% 0%, rgba(99,102,241,0.08), transparent 55%),
+    var(--arag-bg);
+}
+
+#MainMenu, footer, header[data-testid="stHeader"] { visibility: hidden; height: 0; }
+.block-container { padding-top: var(--arag-sp-5) !important; max-width: 900px; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--arag-border); border-radius: var(--arag-radius-full); }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ==========================================================================
+   Brand header
+   ========================================================================== */
+.arag-header {
+  display: flex;
+  align-items: center;
+  gap: var(--arag-sp-4);
+  padding: var(--arag-sp-5) var(--arag-sp-5);
+  margin-bottom: var(--arag-sp-5);
+  background: var(--arag-bg-elevated);
+  border: 1px solid var(--arag-border);
+  border-radius: var(--arag-radius-lg);
+  box-shadow: var(--arag-shadow-sm);
+}
+.arag-header__icon {
+  width: 48px; height: 48px;
+  min-width: 48px;
+  border-radius: var(--arag-radius-md);
+  background: var(--arag-gradient);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  box-shadow: var(--arag-shadow-glow);
+}
+.arag-header__title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.2;
+}
+.arag-header__subtitle {
+  font-size: 0.85rem;
+  color: var(--arag-text-muted);
+  margin: 2px 0 0 0;
+}
+.arag-header__badge {
+  margin-left: auto;
+  padding: 6px 12px;
+  border-radius: var(--arag-radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: var(--arag-primary-soft);
+  color: #C4B5FD;
+  border: 1px solid rgba(139,92,246,0.35);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+.arag-card {
+  background: var(--arag-bg-card);
+  border: 1px solid var(--arag-border);
+  border-radius: var(--arag-radius-md);
+  padding: var(--arag-sp-4);
+  margin-bottom: var(--arag-sp-3);
+}
+.arag-card--dashed {
+  border-style: dashed;
+  background: transparent;
+  text-align: center;
+  color: var(--arag-text-muted);
+}
+.arag-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--arag-text-faint);
+  margin: var(--arag-sp-5) 0 var(--arag-sp-2) 0;
+}
+
+/* ==========================================================================
+   Document manager (sidebar)
+   ========================================================================== */
+.arag-doc-item {
+  display: flex;
+  align-items: center;
+  gap: var(--arag-sp-3);
+  padding: var(--arag-sp-3);
+  background: var(--arag-bg-card);
+  border: 1px solid var(--arag-border);
+  border-radius: var(--arag-radius-sm);
+  margin-bottom: var(--arag-sp-2);
+}
+.arag-doc-item__icon {
+  width: 34px; height: 34px; min-width: 34px;
+  border-radius: 8px;
+  background: var(--arag-info-soft);
+  color: var(--arag-info);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700;
+}
+.arag-doc-item__name {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--arag-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.arag-doc-item__meta {
+  font-size: 0.72rem;
+  color: var(--arag-text-faint);
+}
+
+/* ==========================================================================
+   Chat bubbles
+   ========================================================================== */
+.arag-msg { display: flex; gap: var(--arag-sp-3); margin-bottom: var(--arag-sp-4); align-items: flex-start; }
+.arag-msg--user { flex-direction: row-reverse; }
+.arag-avatar {
+  width: 32px; height: 32px; min-width: 32px;
+  border-radius: var(--arag-radius-full);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700;
+}
+.arag-avatar--user { background: var(--arag-border); color: var(--arag-text); }
+.arag-avatar--assistant { background: var(--arag-gradient); box-shadow: var(--arag-shadow-glow); }
+
+.arag-bubble {
+  max-width: 82%;
+  padding: var(--arag-sp-3) var(--arag-sp-4);
+  border-radius: var(--arag-radius-md);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.arag-bubble--user {
+  background: var(--arag-primary);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+.arag-bubble--assistant {
+  background: var(--arag-bg-card);
+  border: 1px solid var(--arag-border);
+  color: var(--arag-text);
+  border-bottom-left-radius: 4px;
+}
+.arag-bubble p { margin: 0 0 8px 0; }
+.arag-bubble p:last-child { margin-bottom: 0; }
+
+/* ---- Source citation chips ---- */
+.arag-sources { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--arag-sp-2); }
+.arag-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--arag-radius-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.arag-chip--doc  { background: var(--arag-info-soft); color: #7DD3FC; border-color: rgba(56,189,248,0.3); }
+.arag-chip--web  { background: var(--arag-warning-soft); color: #FCD34D; border-color: rgba(245,158,11,0.3); }
+.arag-chip--none { background: var(--arag-danger-soft); color: #FCA5A5; border-color: rgba(248,113,113,0.3); }
+
+/* ==========================================================================
+   Agent trace panel (live reasoning)
+   ========================================================================== */
+.arag-trace-step {
+  display: flex; gap: var(--arag-sp-3);
+  padding: var(--arag-sp-2) 0;
+  font-size: 0.8rem;
+  border-bottom: 1px dashed var(--arag-border);
+}
+.arag-trace-step:last-child { border-bottom: none; }
+.arag-trace-step__dot {
+  width: 20px; height: 20px; min-width: 20px;
+  border-radius: var(--arag-radius-full);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  background: var(--arag-primary-soft);
+  color: #C4B5FD;
+  margin-top: 1px;
+}
+.arag-trace-step__body strong { color: var(--arag-text); }
+.arag-trace-step__body { color: var(--arag-text-muted); }
+
+/* ==========================================================================
+   Buttons / badges / misc (Streamlit widget overrides)
+   ========================================================================== */
+.stButton > button {
+  border-radius: var(--arag-radius-sm) !important;
+  border: 1px solid var(--arag-border) !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  transition: all 0.15s ease;
+}
+.stButton > button:hover {
+  border-color: var(--arag-primary) !important;
+  color: var(--arag-primary) !important;
+}
+button[kind="primary"] {
+  background: var(--arag-gradient) !important;
+  border: none !important;
+}
+
+[data-testid="stFileUploader"] section {
+  border-radius: var(--arag-radius-md) !important;
+  border: 1.5px dashed var(--arag-border) !important;
+  background: var(--arag-bg-card) !important;
+}
+
+[data-testid="stChatInput"] {
+  border-radius: var(--arag-radius-lg) !important;
+}
+
+[data-testid="stExpander"] {
+  border-radius: var(--arag-radius-md) !important;
+  border: 1px solid var(--arag-border) !important;
+  background: var(--arag-bg-elevated) !important;
+}
+
+.arag-empty-state {
+  text-align: center;
+  padding: var(--arag-sp-7) var(--arag-sp-5);
+  color: var(--arag-text-muted);
+}
+.arag-empty-state__icon { font-size: 2.4rem; margin-bottom: var(--arag-sp-3); }
+.arag-empty-state__title { font-size: 1rem; font-weight: 700; color: var(--arag-text); margin-bottom: 4px; }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .block-container { padding-left: var(--arag-sp-3) !important; padding-right: var(--arag-sp-3) !important; }
+  .arag-header { flex-wrap: wrap; padding: var(--arag-sp-4); }
+  .arag-header__badge { margin-left: 0; }
+  .arag-bubble { max-width: 92%; }
+}
