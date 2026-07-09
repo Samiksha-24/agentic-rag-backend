@@ -1,4 +1,4 @@
-# Agentic RAG using CrewAI — Redesigned
+# Agentic RAG using CrewAI 
 
 A Streamlit chat app where you upload documents and a small **CrewAI** multi-agent
 pipeline answers your questions — searching your documents first, and falling
